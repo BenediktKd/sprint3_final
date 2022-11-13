@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
+  port: <%= ENV["DB_PORT"] %>
+
+development:
+  <<: *default
+  database: easy_cancha_development
+
+test:
+  <<: *default
+  database: easy_cancha_test
+
+production:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
+
