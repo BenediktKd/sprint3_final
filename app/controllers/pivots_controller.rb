@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PivotsController < ApplicationController
   before_action :set_pivot, only: %i[show edit update destroy]
 
@@ -74,4 +76,3 @@ class PivotsController < ApplicationController
     params.require(:pivot).permit(:club_name, :sport_name, :club_address, :status)
   end
 end
-
