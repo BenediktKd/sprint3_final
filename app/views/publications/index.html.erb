@@ -1,0 +1,80 @@
+<h1 align = 'center'>Publicaciones</h1>
+<!-- Filter -->
+<div align = 'center' class="filters">
+  <%= link_to "Filter by All", publications_path()%>
+  <%= link_to "Cancha_1", publications_path(:club_name=>'Test_Cancha_1')%>
+  <%= link_to "Cancha_3", publications_path(:club_name=>'Test_Cancha_3')%>
+  <%= link_to "Cancha_4", publications_path(:club_name=>'Test_Cancha_4')%>
+</div>
+
+<!--Si el user es administrador-->
+<%if user_admin%>
+  <p align = 'center'>
+    <%= link_to 'create publication', new_publication_path %><br>
+  </p>
+<%end%>
+<div align = 'center'>
+  
+</div>
+
+<table class='flat-table' align = 'center'>
+  <tbody>
+    <tr>
+      <th>ID de publicacion</th>
+      <th>Nombre del club</th>
+      <th>Direccion del club</th>
+      <th>Deporte</th>
+      <%if !user_admin%>
+        <th>Reservar</th>
+        <th>Review</th>
+        <th>Imagen</th>
+      <%end%>
+    </tr>
+    <% @publications.each do |publication| %>
+      <tr>
+
+        <td>
+          <%= publication.id %>
+        </td>
+
+        <td>
+
+          <%= publication.club_name %>
+        </td>
+
+        <td>
+          <%= publication.club_address %>
+        </td>
+
+        <td>
+
+          <%= publication.sport_name %>
+        </td>
+
+        <td>
+          <% if !user_admin && !user_moderator %>
+            <%= link_to 'reservar', create_pivot_path(:publication_id => publication.id,:club_name => publication.club_name, :club_address => publication.club_address, :sport_name => publication.sport_name)  %>
+          <% end %>
+        </td>
+
+        <td>
+          <%=promedio(publication.id)%>
+          <%if User.find(current_user.id).pivots.pluck(:publication_id).include?(publication.id)%>
+            <br>
+            <%= link_to 'reseña', new_publication_review_path(publication) %>
+          <%else%>
+            <h6>Reserva primero!</h6>
+          <%end%>
+          <% if user_admin == true%>
+          <td><%= link_to 'Destroy', publication, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%end%>
+        </td>
+
+        <td>
+          <img src="<%= rails_blob_path(publication.image)%>" alt="image_alter">
+        </td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+	</table>
