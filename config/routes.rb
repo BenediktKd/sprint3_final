@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resources :responses
   root 'publications#index'
@@ -12,5 +14,4 @@ Rails.application.routes.draw do
   post 'publications/index', to: 'publications#index', as: 'filter'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # Create reviews
-
 end

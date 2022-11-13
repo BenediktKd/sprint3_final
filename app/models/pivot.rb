@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Pivot < ApplicationRecord
   has_many :messages
   belongs_to :user

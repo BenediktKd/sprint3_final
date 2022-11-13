@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class PublicationsController < ApplicationController
   def index
-    if params[:sport_name]
-      @publications = Publication.where(:sport_name => params[:sport_name])
-    else
-      @publications = Publication.all
-    end
+    @publications = if params[:sport_name]
+                      Publication.where(sport_name: params[:sport_name])
+                    else
+                      Publication.all
+                    end
   end
 
   def new
@@ -14,6 +16,7 @@ class PublicationsController < ApplicationController
   def show
     @publication = Publication.find(params[:id])
   end
+
   def destroy
     @publication = Publication.find(params[:id])
     @publication.destroy
@@ -23,6 +26,7 @@ class PublicationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
   def create
     @publication = Publication.new(publications_params)
     @publication.user_id = current_user.id

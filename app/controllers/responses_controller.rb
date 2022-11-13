@@ -1,14 +1,12 @@
+# frozen_string_literal: true
+
 class ResponsesController < ApplicationController
   before_action :set_response, only: %i[show edit update destroy]
 
   # GET /responses or /responses.json
   def index
-    @responses = if current_user.moderator
-                   Response.all
-
-                 else
-                   Response.all
-                 end
+    @responses = end
+    Response.all
   end
 
   # GET /responses/1 or /responses/1.json
