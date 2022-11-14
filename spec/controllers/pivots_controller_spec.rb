@@ -2,10 +2,10 @@
 
 require 'rails_helper'
 
-RSpec.describe MessagesController, type: :controller do
+RSpec.describe PivotsController, type: :controller do
   let(:user) { create(:user) }
   let(:pivots_list) { create_list(:pivot, 5, moderador_id: user.id) }
-  let(:message) { create(:message) }
+  let(:pivot) { create(:pivot) }
 
   describe 'GET #index' do
     before do
@@ -22,7 +22,7 @@ RSpec.describe MessagesController, type: :controller do
   describe 'GET #show' do
     before do
       sign_in user
-      get :show, params: { id: message.id }
+      get :show, params: { id: pivot.id }
     end
 
     it 'returns http success' do
@@ -44,7 +44,7 @@ RSpec.describe MessagesController, type: :controller do
   describe 'GET #edit' do
     before do
       sign_in user
-      get :edit, params: { id: message.id }
+      get :edit, params: { id: pivot.id }
     end
 
     it 'returns http success' do
@@ -56,7 +56,7 @@ RSpec.describe MessagesController, type: :controller do
     before do
       sign_in user
       pivots_list
-      post :create, params: { message: message.attributes }
+      post :create, params: { pivot: pivot.attributes }, format: :html
     end
 
     it 'redirects to another page' do
