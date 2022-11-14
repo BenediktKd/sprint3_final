@@ -5,7 +5,9 @@ class ResponsesController < ApplicationController
 
   # GET /responses or /responses.json
   def index
-    @responses = end
+    @responses = if current_user.moderator
+
+                 end
     Response.all
   end
 

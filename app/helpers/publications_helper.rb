@@ -2,13 +2,13 @@
 
 module PublicationsHelper
   def promedio(id)
-    @sumatoria = Publication.find_by(id: id).reviews.pluck(:review).sum
-    @count = Publication.find_by(id: id).reviews.pluck(:review).count
+    reviews = Publication.find_by(id: id).reviews.pluck(:review)
+    @sumatoria = reviews.sum
+    @count = reviews.count
     @resultado = begin
       @sumatoria / @count
     rescue StandardError
       0
     end
-    @resultado
   end
 end

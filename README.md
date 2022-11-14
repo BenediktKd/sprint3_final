@@ -1,32 +1,24 @@
 # README
- 
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
- 
+
 Things you may want to cover:
- 
-* Ruby version: 2.6.6
- 
-* System dependencies: instalación de webpacker
- 
+
+* Ruby version
+
+* System dependencies
+
 * Configuration
- 
+
 * Database creation
- 
+
 * Database initialization
- 
+
 * How to run the test suite
- 
+
 * Services (job queues, cache servers, search engines, etc.)
- 
-* Deployment instructions: cada usuario se crea por defecto como un usuario normal. Si se quiere hacer administrador, lo que se hizo fue, desde la consola de rails, seleccionar al usuario que se quiere hacer administrador (@User) y colocar @User.admin = true y luego guardarlo. Lo mismo si se quiere hacer al usuario moderador, en donde se debe hacer lo mismo para el usuario que se quiere seleccionar, pero cambiando la línea @User.admin = true por @User.moderator = true. El mail de moderador es: moderator@moderator.com y el de administrador es: admin@admin.com    La clave de ambos es 123456. El de usuario es user@user.com y la clave es la misma. Los 3 ya se encuentran creados.
- 
-El link de la aplicación en Heroku: sprint3software.herokuapp.com
- 
-No se asignó gente a Projects en Github, ya que se conversó aparte ese tema. De todas maneras está hecho el Github Projects y se dejó como issue en el repositorio del proyecto.
- 
-Se usó una API SimpleFileUpload para subir las imagenes
- 
-Nuevo repositorio: https://github.com/BenediktKd/sprint3_final
- 
-*si no se carga la API para subir fotos, actualizar la vista.
+
+* Deployment instructions
+
+* ...
