@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 # Specs in this file have access to a helper object that includes
@@ -11,7 +13,7 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe PublicationsHelper, type: :helper do
-    describe '#promedio' do
+  describe '#promedio' do
     it 'averages numbers' do
       expect(helper).to receive(:link_to).with('foo', 'bar')
       helper.promedio
